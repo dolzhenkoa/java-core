@@ -26,7 +26,7 @@ public class Task02 {
 	*/
 	private static double balance=0;
 	private static double commision=0;
-	private static double percent=5;
+	private static final double percent=5;
 	
 	public static void main(String[] args) {
 		balance=100;

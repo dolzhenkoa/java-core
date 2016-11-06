@@ -28,7 +28,7 @@ public class Task04 {
 	public static void fund(String owner, double sum) {
 	
 		for(int i=0;i<ownerNames.length;i++) {
-			if(ownerNames[i]==owner) {
+			if(owner.equals(ownerNames[i])) {
 				balances[i]+=sum;
 				System.out.printf("%s %d%n",owner,balances[i]);
 			}

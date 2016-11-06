@@ -45,7 +45,7 @@ public class Task03 {
 	public static void withdrawal(String owner, double sum) {
 	
 		for(int i=0;i<ownerNames.length;i++) {
-			if(ownerNames[i]==owner) {
+			if(owner.equals(ownerNames[i])) {
 				balance=balances[i];
 				commision=sum*(percent/100d);
 				if(commision+sum <= balance) {

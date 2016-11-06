@@ -1,6 +1,7 @@
 package module02;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class Task01 {
 
@@ -25,12 +26,10 @@ public class Task01 {
 	secondLargest(int array[]), secondLargest(double[])  
 	*/
 	
-	private static int[] inputI=new int[10];
-	private static double[] inputD=new double[10];
-	
 	public static void main(String[] args) {
-		fill();
-		
+		int[] inputI=fillRandomInt(10, -15, 15);
+		double[] inputD=fillRandomDouble(10, -15, 15);
+				
 		System.out.println("array int		: "+Arrays.toString(inputI));
 		System.out.println("array double		: "+Arrays.toString(inputD));
 				
@@ -57,15 +56,22 @@ public class Task01 {
 
 	}
 	
-	public static void fill() {
+	public static int[] fillRandomInt(int size, int min, int max) {
+		int[] array=new int[size];
 		
-		for(int i = 0; i < inputI.length; i++){
-			inputI[i]=((int)(Math.random() * 31) - 15);
+		for(int i = 0; i < array.length; i++) {
+			array[i]=min+new Random().nextInt((max - min) + 1);
 		}
+		return array;
+	}
+	
+	public static double[] fillRandomDouble(int size, int min, int max) {
+		double[] array=new double[size];
 		
-		for(int i = 0; i < inputD.length; i++){
-			inputD[i]=((double)(Math.random() * 31) - 15);;
+		for(int i = 0; i < array.length; i++) {
+			array[i]=min+new Random().nextDouble()*((max - min) + 1);
 		}
+		return array;
 	}
 	
 	public static int sum(int array[]) {
