@@ -9,13 +9,18 @@ public class User {
 	private String currency;
 	
 	public void paySalary() {
-		balance+=10000;
+		balance+=salary;
 	}
 	
 	public void withdraw(int summ) {
 		int percent = summ<1000?5:10;
 		double commision=summ*(percent/100d);
-		balance-=commision+summ;
+		if(balance>=commision+summ) {
+			balance-=commision+summ;
+		} else {
+			System.out.println("not enough money for the transaction");
+		}
+		
 	}
 	
 	public int companyNameLenght() {

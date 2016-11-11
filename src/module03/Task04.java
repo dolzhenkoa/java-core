@@ -18,6 +18,7 @@ public class Task04 {
 		User user=new User();
 		user.setCompanyName("Enterprise");
 		user.setMonthsOfEmployment(7);
+		user.setSalary(10000);
 		
 		System.out.println("balance: "+user.getBalance());
 		user.paySalary();
