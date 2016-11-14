@@ -1,4 +1,4 @@
-package module03;
+package module03.task03;
 
 public class SpecialStudent extends CollegeStudent {
 	private long secretKey; 

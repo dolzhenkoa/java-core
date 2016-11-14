@@ -1,4 +1,6 @@
-package module03;
+package module03.task03;
+
+import org.apache.commons.lang.ArrayUtils;
 
 public class Student {
 	private String firstName;
@@ -15,7 +17,7 @@ public class Student {
 
 	public Student(String lastName, Course[] coursesTaken) {
 		this.lastName = lastName;
-		this.coursesTaken = coursesTaken;
+		this.coursesTaken = (Course[]) ArrayUtils.clone(coursesTaken);
 	}
 
 	
@@ -23,7 +25,7 @@ public class Student {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.group = group;
-		this.coursesTaken = coursesTaken;
+		this.coursesTaken = (Course[]) ArrayUtils.clone(coursesTaken);
 		this.age = age;
 	}
 
@@ -56,7 +58,7 @@ public class Student {
 	}
 
 	public void setCoursesTaken(Course[] coursesTaken) {
-		this.coursesTaken = coursesTaken;
+		this.coursesTaken = (Course[]) ArrayUtils.clone(coursesTaken);
 	}
 
 	public int getAge() {

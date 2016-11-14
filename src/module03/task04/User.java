@@ -1,4 +1,4 @@
-package module03;
+package module03.task04;
 
 public class User {
 	private String name;

@@ -1,4 +1,4 @@
-package module03;
+package module03.task03;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

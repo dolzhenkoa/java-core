@@ -1,4 +1,4 @@
-package module03;
+package module03.task01;
 
 /**
 You must add a sing method to the Bird class, then modify themain method accordingly so that the code prints the following lines:
