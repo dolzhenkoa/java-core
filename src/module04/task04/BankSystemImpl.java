@@ -6,25 +6,42 @@ public class BankSystemImpl implements BankSystem {
 
 	@Override
 	public void withdrawOfUser(User user, int amount) {
-		if(user.getBalance()-amount>=0) {
-			user.setBalance(user.getBalance()-amount);
+	
+		if(amount<=user.getBank().getLimitOfWithdrawal()) {
+			double commission = amount*(user.getBank().getCommission(amount)/100d);
+			double summ=user.getBalance()-(commission+amount);
+			
+			if(summ>=0) {
+				user.setBalance(summ);
+			} else {
+				System.out.println("withdraw: transaction not allowed");
+			}
 		} else {
-			System.out.println("transaction not allowed");
+			System.out.println(user.getName()+" withdraw limit: transaction not allowed");
 		}
 	}
 
 	@Override
 	public void fundUser(User user, int amount) {
-		user.setBalance(user.getBalance()+amount);
+		if(amount<=user.getBank().getLimitOfFunding()) {
+			double commission = amount*(user.getBank().getCommission(amount)/100d);
+			double summ=user.getBalance()+(amount-commission);
+			
+			user.setBalance(summ);
+		} else {
+			System.out.println(user.getName()+" fund limit: transaction not allowed");
+		}
 	}
 
 	@Override
 	public void transferMoney(User fromUser, User toUser, int amount) {
-		if(fromUser.getBalance()-amount>=0) {
-			withdrawOfUser(fromUser,amount);
+		double fromUserBalance=fromUser.getBalance();
+		withdrawOfUser(fromUser,amount);
+		
+		if(fromUserBalance!=fromUser.getBalance()) {
 			fundUser(toUser,amount);
 		} else {
-			System.out.println("transaction not allowed");
+			System.out.println("transfer: transaction not allowed");
 		}
 	}
 
