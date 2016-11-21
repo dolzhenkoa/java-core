@@ -1,7 +1,5 @@
 package module03.task03;
 
-import org.apache.commons.lang.ArrayUtils;
-
 public class Student {
 	private String firstName;
 	private String lastName;
@@ -17,7 +15,7 @@ public class Student {
 
 	public Student(String lastName, Course[] coursesTaken) {
 		this.lastName = lastName;
-		this.coursesTaken = (Course[]) ArrayUtils.clone(coursesTaken);
+		this.coursesTaken = coursesTaken.clone();
 	}
 
 	
@@ -25,7 +23,7 @@ public class Student {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.group = group;
-		this.coursesTaken = (Course[]) ArrayUtils.clone(coursesTaken);
+		this.coursesTaken = coursesTaken.clone();
 		this.age = age;
 	}
 
@@ -58,7 +56,7 @@ public class Student {
 	}
 
 	public void setCoursesTaken(Course[] coursesTaken) {
-		this.coursesTaken = (Course[]) ArrayUtils.clone(coursesTaken);
+		this.coursesTaken = coursesTaken.clone();
 	}
 
 	public int getAge() {
