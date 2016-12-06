@@ -15,18 +15,37 @@ public class UserUtils {
 		}
 	}
 	
+	private boolean isNullArray(User[] users) {
+		if(users==null||users.length==0) {
+			return true;
+		}
+		return false;
+	}
+	
 	//users are equal when all their field are equal
 	public User[] uniqueUsers(User[] users) {
+		if(isNullArray(users)) return users;
+		
 		User[] result = null;
 		for(User user1:users) {
 			int i=0;
 			for(User user2:users) {
-				if(user1.equals(user2)) {
-					i++;
+				if(user1.equals(user2)) i++;
+				if(result!=null) {
+					for(User user3:result) {
+						if(user1.equals(user3)) i--;
+					}
 				}
 			}
+			
+			
+			
 			if(i>1) {
-				result=addItemToArray(result,user1).clone();
+				if(result==null) {
+					result=new User[]{user1};
+				} else {
+					result=addItemToArray(result,user1).clone();
+				}
 			}
 		}
 		return result;
@@ -34,6 +53,8 @@ public class UserUtils {
 	
 	//user’s balance == balance
 	public User[] usersWithContitionalBalance(User[] users, int balance) {
+		if(isNullArray(users)) return users;
+		
 		User[] result = null;
 		for(User user:users) {
 			if(user.getBalance()==balance) {
@@ -44,6 +65,8 @@ public class UserUtils {
 	}
 	
 	public final User[] paySalaryToUsers(User[] users) {
+		if(isNullArray(users)) return users;
+		
 		for(User user:users) {
 			user.paySalary();
 		}
@@ -51,6 +74,8 @@ public class UserUtils {
 	}
 	
 	public final long[] getUsersId(User[] users) {
+		if(isNullArray(users)) return null;
+		
 		long[] result= new long[users.length];
 		int i=0;
 		for(User user:users) {
@@ -60,6 +85,8 @@ public class UserUtils {
 	}
 	
 	public User[] deleteEmptyUsers(User[] users) {
+		if(isNullArray(users)) return users;
+		
 		User[] result = null;
 		for(User user:users) {
 			if(user.getFirstName()!=null) {

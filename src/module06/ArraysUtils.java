@@ -2,9 +2,7 @@ package module06;
 
 public final class ArraysUtils {
 	
-
 	public static int sum(int array[]) {
-		
 		int result=0;
 		for(int i=0;i<array.length;i++) {
 			result+=array[i];
@@ -79,6 +77,7 @@ public final class ArraysUtils {
 	}
 	
 	public static int[] reverse(int[] array) {
+		
 		int i=array.length-1;
 		int[] result=new int[array.length];
 		for(int item:array) {

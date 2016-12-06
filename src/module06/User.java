@@ -8,7 +8,6 @@ public class User {
 	private int balance;
 	
 	public User(long id, String firstName, String lastName, int salary, int balance) {
-		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -66,7 +65,6 @@ public class User {
 		int result = 1;
 		result = prime * result + balance;
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
-		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + salary;
 		return result;
@@ -87,8 +85,6 @@ public class User {
 			if (other.firstName != null)
 				return false;
 		} else if (!firstName.equals(other.firstName))
-			return false;
-		if (id != other.id)
 			return false;
 		if (lastName == null) {
 			if (other.lastName != null)
