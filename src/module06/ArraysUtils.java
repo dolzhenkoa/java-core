@@ -79,10 +79,30 @@ public final class ArraysUtils {
 	}
 	
 	public static int[] reverse(int[] array) {
-		return array;	
+		int i=array.length-1;
+		int[] result=new int[array.length];
+		for(int item:array) {
+			result[i]=item;
+			i--;
+		}
+		return result;	
 	}
 	
 	public static int[] findEvenElements(int[] array) {
-		return array;
+		int[] result = null;
+		for(int i=0;i<array.length-1;i++) {
+			if(i%2==0) {
+				if(result==null) {
+					result=new int[1];
+					result[0]=array[i];
+				} else {
+					int tmp[]=new int[result.length+1];
+					System.arraycopy(result, 0, tmp, 0, result.length);
+					tmp[tmp.length-1]=array[i];
+					result=tmp.clone();
+				}
+			}
+		}
+		return result;
 	}
 }
