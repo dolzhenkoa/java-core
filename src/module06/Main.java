@@ -15,11 +15,12 @@ public class Main {
 		
 		User[] users={user1, user2, user3, user4, user5};
 		System.out.println(Arrays.toString(users));
-		System.out.println(Arrays.toString(userUtils.deleteEmptyUsers(users)));
 		System.out.println(Arrays.toString(userUtils.uniqueUsers(users)));
+		System.out.println(Arrays.toString(userUtils.deleteEmptyUsers(users)));
 		System.out.println(Arrays.toString(userUtils.usersWithContitionalBalance(users, 2000)));
 		userUtils.paySalaryToUsers(users);
 		System.out.println(Arrays.toString(users));
+		
 	}
 
 }

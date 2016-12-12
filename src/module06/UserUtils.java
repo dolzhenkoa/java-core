@@ -1,5 +1,7 @@
 package module06;
 
+import java.util.Arrays;
+
 public class UserUtils {
 	
 	private User[] addItemToArray(User[] users, User user) {
@@ -26,28 +28,34 @@ public class UserUtils {
 	public User[] uniqueUsers(User[] users) {
 		if(isNullArray(users)) return users;
 		
-		User[] result = null;
-		for(User user1:users) {
-			int i=0;
-			for(User user2:users) {
-				if(user1.equals(user2)) i++;
-				if(result!=null) {
-					for(User user3:result) {
-						if(user1.equals(user3)) i--;
-					}
-				}
-			}
-			
-			
-			
-			if(i>1) {
-				if(result==null) {
-					result=new User[]{user1};
-				} else {
-					result=addItemToArray(result,user1).clone();
+		boolean[] marks=new boolean[users.length];
+		Arrays.fill(marks,false);
+		
+		
+		for(int i=0;i<users.length;i++) {
+			for(int j=0;j<users.length;j++) {
+				if(users[i].equals(users[j])&&i!=j) {
+					marks[i]=true;
+					marks[j]=true;
 				}
 			}
 		}
+		
+	 	int count=0;
+		for(boolean mark:marks) {
+			if(mark==false) {
+				count++;
+			}
+		}
+		User[] result=new User[count];
+		
+		count=0;
+		for(int i=0;i<users.length;i++) {
+			if(marks[i]==false) {
+				result[count++]=users[i];
+			}
+		}
+		
 		return result;
 	}
 	
