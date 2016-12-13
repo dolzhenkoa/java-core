@@ -50,6 +50,12 @@ public class Room {
 			return false;
 		return true;
 	}
+	
+	@Override
+	public String toString() {
+		return "Room [price=" + price + ", persons=" + persons + ", dateAvailableFrom=" + dateAvailableFrom
+				+ ", hotelName=" + hotelName + ", cityName=" + cityName + "]";
+	}
 
 	public long getId() {
 		return id;

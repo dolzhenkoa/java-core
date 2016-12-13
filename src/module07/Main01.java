@@ -7,8 +7,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class Main {
+public class Main01 {
 
 	public static void main(String[] args) {
 		User user1=new User(1,"user","1","city 1",1000);
@@ -36,6 +37,7 @@ public class Main {
 		
 		System.out.println(orders);
 		
+		//-------------------------------------------------------
 		Collections.sort(orders, new Comparator<Order>() {
 	        public int compare(Order o1, Order o2) {
 	        	if (o1.getPrice()>o2.getPrice())
@@ -49,6 +51,7 @@ public class Main {
 		
 		System.out.println(orders);
 		
+		//-------------------------------------------------------
 		Collections.sort(orders, new Comparator<Order>() {
 	        public int compare(Order o1, Order o2) {
 	        	int result=o1.getUser().getCity().compareTo(o2.getUser().getCity());
@@ -66,6 +69,7 @@ public class Main {
 		
 		System.out.println(orders);
 		
+		//-------------------------------------------------------
 		Collections.sort(orders, new Comparator<Order>() {
 	        public int compare(Order o1, Order o2) {
 	        	int result=o1.getUser().getCity().compareTo(o2.getUser().getCity());
@@ -83,16 +87,34 @@ public class Main {
 		
 		System.out.println(orders);
 		
+		//-------------------------------------------------------
 		Set orders1=new HashSet(orders);
 		System.out.println(orders1);
 		System.out.println("size = "+orders1.size());
 		
+		//-------------------------------------------------------
 		Predicate<Order> filter = p-> p.getPrice() < 1500;
 		orders1.removeIf(filter);
 		System.out.println(orders1);
 		System.out.println("size = "+orders1.size());
 		
-		orders.parallelStream()
+		//-------------------------------------------------------
+		List listEUR=orders.stream().filter((p)-> p.getCurrency()==Currency.EUR).collect(Collectors.toList());
+		List listUSD=orders.stream().filter((p)-> p.getCurrency()==Currency.USD).collect(Collectors.toList());
+		System.out.println(listEUR);
+		System.out.println(listUSD);
+		
+		//-------------------------------------------------------
+		Set<String> cities=new HashSet();
+		for(Order order:orders) {
+			cities.add(order.getUser().getCity());
+		}
+		
+		List<List<Order>> listCityOrder=new ArrayList();
+		for(String city:cities) {
+			listCityOrder.add( orders.stream().filter((p)-> p.getUser().getCity().equals(city)).collect(Collectors.toList()) );
+		}
+		System.out.println(listCityOrder);
 		
 	}
 

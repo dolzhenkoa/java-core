@@ -11,7 +11,6 @@ public class Order implements Comparable {
 	public Order() { }
 
 	public Order(long id, int price, Currency currency, String itemName, String shopIdentificator, User user) {
-		super();
 		this.id = id;
 		this.price = price;
 		this.currency = currency;

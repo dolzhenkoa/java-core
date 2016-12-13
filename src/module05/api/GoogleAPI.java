@@ -22,8 +22,8 @@ public class GoogleAPI implements API {
 		Room[] tmp=new Room[rooms.length];
 		int counter=0;
 		for(Room item:rooms) {
-			if(item.getPrice()<=price) continue;
-			if(item.getPersons()<=persons) continue;
+			if(item.getPrice()>price) continue;
+			if(item.getPersons()>persons) continue;
 			if(!item.getCityName().equals(city)) continue;
 			if(!item.getHotelName().equals(hotel)) continue;
 			tmp[counter]=item;
