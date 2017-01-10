@@ -21,7 +21,7 @@ public class Order implements Comparable {
 	
 	@Override
 	public String toString() {
-		return "Order [id=" + id + ", price=" + price+", user.city=" + user.getCity() +"]";
+		return "Order [id=" + id + ", price=" + price + ", currency=" + currency +", user.city=" + user.getCity() + ", itemName=" + itemName +"]";
 		/*return "Order [id=" + id + ", price=" + price + ", currency=" + currency + ", itemName=" + itemName
 				+ ", shopIdentificator=" + shopIdentificator + ", user=" + user + "]";*/
 	}
@@ -123,6 +123,10 @@ public class Order implements Comparable {
 		return user;
 	}
 
+	public String getCity() {
+		return user.getCity();
+	}
+	
 	public void setUser(User user) {
 		this.user = user;
 	}

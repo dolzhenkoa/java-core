@@ -13,4 +13,5 @@ public enum Currency {
 	public String getCurrency() {
 		return currency;
 	}
+	
 }
