@@ -1,9 +1,5 @@
 package module10;
 
-import module10.Test01Exception;
-import module10.Test02Exception;
-import module10.Test03Exception;
-
 public class Main {
 
 	public static void main(String[] args) {
